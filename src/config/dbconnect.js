@@ -1,4 +1,8 @@
 import mongoose from "mongoose";
-mongoose.connect("mongodb+srv://amanda:24jKv74Bh7JPKUV1@nodejslibrary.ipe20.mongodb.net/NodeJSLibrary");
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PW}@${(process.env.ATLAS_DB_NAME).toLowerCase()}.ipe20.mongodb.net/${process.env.ATLAS_DB_NAME}`);
 let db = mongoose.connection;
 export default db;
