@@ -14,7 +14,7 @@ class BookController {
         .populate("author", "name")
         .exec((err, books) => {
             if (err) {
-                res.status(400).send({message: `${err.message} - ID not found`});
+                res.status(404).send({message: `${err.message} - ID not found`});
             } else {
                 res.status(200).send({books});
             }
@@ -43,6 +43,13 @@ class BookController {
             if (!err) res.status(200).send({message: `Book ${id} successfully deleted.`});
             else res.status(500).send({message: err.message});
         })
+    }
+
+    static getBooksByPublisher = (req, res) => {
+        const pub = req.query.pub;
+        books.find({"publisher": pub}, (err, books) => {
+            res.status(200).send(books);
+        });
     }
 }
 

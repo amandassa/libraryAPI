@@ -7,6 +7,7 @@ const bookSchema = new mongoose.Schema({
         ref: "authors", 
         required: true
         },
+    publisher: {type: String},
     pages: {type: Number}
 });
 
