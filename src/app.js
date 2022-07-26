@@ -1,30 +1,21 @@
 import express from "express";
 import db from "./config/dbconnect.js";
 import books from "./models/Book.js"
+import routes from "./routes/index.js";
+
 db.on("err", console.log.bind(console, "Database connection error."));
 db.once("open", () => {
     console.log("Database connection successfully established.");
 });
+
 const app = express();
+
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.status(200).send("NodeJS Library");
-});
-
-app.get('/books', (req, res) => {
-    books.find((err, books) => {
-        res.status(200).json(books);
-    });
-});
+routes(app);
 
 app.get('/books/:id', (req, res) => {
     res.json(books[getBookIndex(req.params.id)]).status(200);
-});
-
-app.post('/books', (req, res) => {
-    books.push(req.body);
-    res.sendStatus(201);    //created
 });
 
 app.put('/books/:id', (req, res) => {
