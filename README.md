@@ -21,3 +21,5 @@ View on [SwaggerHub](https://app.swaggerhub.com/apis-docs/amandassa/LibraryAPI/1
   GET /books/:id
   GET /books/query?publisher
 ```
+
+This project was developed for studies on the Express + MongoDB course, which you can check the certificate [here](https://cursos.alura.com.br/certificate/1ec7986e-a4b6-48a3-af94-0903f3b02bbd).
